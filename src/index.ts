@@ -1,9 +1,9 @@
-import "./core/load-env.js";
+import "#core/load-env.js";
 import express from "express";
 import path from "path";
 import url from "url";
-import { createRestApiServer } from "./core/servers/index.js";
-import { envConstants } from "./core/constants/index.js";
+import { createRestApiServer } from "#core/servers/index.js";
+import { envConstants } from "#core/constants/index.js";
 import { booksApi } from "./books.api.js";
 
 const restApiServer = createRestApiServer();

@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { bookRepository } from "#dals/index.js";
 import {
   getBookList,
   getBook,
@@ -14,7 +15,7 @@ booksApi
     try {
       const page = Number(req.query.page);
       const pageSize = Number(req.query.pageSize);
-      let bookList = await getBookList();
+      let bookList = await bookRepository.getBookList();
 
       if (page && pageSize) {
         const startIndex = (page - 1) * pageSize;
