@@ -4,7 +4,7 @@ import path from "path";
 import url from "url";
 import { createRestApiServer } from "#core/servers/index.js";
 import { envConstants } from "#core/constants/index.js";
-import { booksApi } from "./books.api.js";
+import { booksApi } from "#pods/book/index.js";
 
 const restApiServer = createRestApiServer();
 
