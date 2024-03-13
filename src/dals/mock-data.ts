@@ -1,52 +1,53 @@
-import { Book } from "./book/index.js";
+import { ObjectId } from "mongodb";
+import { Casa } from "./casa/index.js";
 
 export interface DB {
-  books: Book[];
+  casas: Casa[];
 }
 
 export const db: DB = {
-  books: [
+  casas: [
     {
-      id: "1",
-      title: "Choque de reyes",
-      releaseDate: new Date("1998-11-16"),
-      author: "George R. R. Martin",
+      _id: new ObjectId(),
+      name: "Ribeira Charming Duplex",
+      summary: "Fantastic duplex apartment with three bedrooms, located in the historic area of Porto, Ribeira (Cube) - UNESCO World Heritage Site. Centenary building fully rehabilitated, without losing their original character.",
+      street: "Porto, Porto, Portugal",
     },
     {
-      id: "2",
-      title: "Harry Potter y el prisionero de Azkaban",
-      releaseDate: new Date("1999-07-21"),
-      author: "J. K. Rowling",
+      _id: new ObjectId(),
+      name: "Cozy house at Beyoğlu",
+      summary: "Hello dear Guests, wellcome to istanbul. My House is 2+1 and at second floor. 1 privite room is for my international guests. House is Very close to Taksim Square. You can Walk in 30 minutes or you can take a bus.  The bus stop is only 100 m from home. You can go Taksim, Eminönü, Karaköy, Kadıköy, Beyazıt, Sultanahmet easily from home.  I have 1 bed, two people can sleep together. Second person should pay extra. You can use kitchen, bathroom, free Wifi, dishwasher, washing machine, Ironing.",
+      street: "Beyoğlu, İstanbul, Turkey",
     },
     {
-      id: "3",
-      title: "The Witcher - The Last Wish",
-      releaseDate: new Date("1993-11-02"),
-      author: "Andrzej Sapkowski",
+      _id: new ObjectId(),
+      name: "Cozy Nest, heart of the Plateau",
+      summary: "Come spend a few days (or weeks) in our beautiful and cozy apartment situated in the heart of Montreal's most happening neighborhood! You will share the space with me as, maybe another guest and probably a cute cat or kitten (I sometimes foster cute little furry balls). LGBTQ friendly :) Looking forward to meeting you!",
+      street: "Montreal, QC, Canada",
     },
     {
-      id: "4",
-      title: "El Hobbit",
-      releaseDate: new Date("1937-09-21"),
-      author: "J. R. R. Tolkien",
+      _id: new ObjectId(),
+      name: "Alugo Apart frente mar Barra Tijuca",
+      summary: "Residencial com Serviços, Sala em 2 ambientes,varanda,quarto,cozinha,wc. Frente para o Mar da Barra, condomínio com piscina aquecida, sauna, hidromassagem,salões de festa,academia,cabeleireiro,play, mobiliado com todos os eletrodomésticos.",
+      street: "Rio de Janeiro, Rio de Janeiro, Brazil",
     },
     {
-      id: "5",
-      title: "Assassin's Quest",
-      releaseDate: new Date("1997-03-03"),
-      author: "Robin Hobb",
+      _id: new ObjectId(),
+      name: "Where Castles and Art meet the Sea",
+      summary: "The flat is located in Matosinhos, part of Porto's District, where you can have the best of both worlds: the magic and beauty of Porto's Old City and the Beaches, Central Park and Seafood restaurants, with plenty of eclectic entertainment.",
+      street: "Matosinhos, Porto, Portugal",
     },
     {
-      id: "6",
-      title: "Homeland",
-      releaseDate: new Date("1990-09-19"),
-      author: "R. A. Salvatore",
+      _id: new ObjectId(),
+      name: "Charming Spacious Park Slope Studio",
+      summary: "pacious and inviting garden level studio apartment in townhouse with separate entrance and large kitchen located in Park Slope, very near the F and G subway and Prospect Park, and only a few steps away from 7th Avenue, with its many fine shops and restaurants.",
+      street: "Brooklyn, NY, United States",
     },
     {
-      id: "7",
-      title: "American Gods",
-      releaseDate: new Date("2001-06-19"),
-      author: "Neil Gaiman",
+      _id: new ObjectId(),
+      name: "Asia House, Garden Room, Princevile",
+      summary: "Asia House, sits on an ocean bluff in Princeville on the spectacular north shore of Kauai. The ocean or Queen's Bath is right across the street. There are beaches all over Princeville, all within 1-2 miles or less. Princeville Resort is a jewel on Hanalei Bay, known as one of the most beautiful bays and beaches in the world. This location is very quiet. Kauai has it all... spectacular scenery, gracious people, bird-watching, whale watching, snorkeling, diving, golfing, hiking, and more.",
+      street: "Princeville, HI, United States",
     },
   ],
 };

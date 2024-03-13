@@ -2,9 +2,9 @@ import "#core/load-env.js";
 import express from "express";
 import path from "path";
 import url from "url";
-import { createRestApiServer } from "#core/servers/index.js";
+import { createRestApiServer, connectToDBServer } from "#core/servers/index.js";
 import { envConstants } from "#core/constants/index.js";
-import { booksApi } from "#pods/book/index.js";
+import { casasApi } from "#pods/casa/index.js";
 
 const restApiServer = createRestApiServer();
 
@@ -18,13 +18,19 @@ restApiServer.use(async (req, res, next) => {
   next();
 });
 
-restApiServer.use("/api/books", booksApi);
+restApiServer.use("/api/casas", casasApi);
 
 restApiServer.use(async (error, req, res, next) => {
   console.error(error);
   res.sendStatus(500);
 });
 
-restApiServer.listen(envConstants.PORT, () => {
+restApiServer.listen(envConstants.PORT, async () => {
+  if (!envConstants.isApiMock) {
+    await connectToDBServer(envConstants.MONGODB_URI);
+    console.log("Connected to DB");
+  } else {
+    console.log('Running API mock');
+  }
   console.log(`Server ready at port ${envConstants.PORT}`);
 });
