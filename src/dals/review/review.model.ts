@@ -4,4 +4,5 @@ export interface Review {
     autor: string;
     review: string;
     fecha: Date;
+    casa_id: ObjectId;
   }
