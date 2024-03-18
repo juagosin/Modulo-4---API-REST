@@ -7,6 +7,7 @@ export const mapCasaFromModelToApi = (casa: model.Casa): apiModel.Casa => ({
   name: casa.name,
   summary: casa.summary,
   street: casa.street,
+  reviews: casa.reviews,
 });
 
 export const mapCasaListFromModelToApi = (
@@ -18,6 +19,5 @@ export const mapCasaFromApiToModel = (casa: apiModel.Casa): model.Casa => ({
    name: casa.name,
    summary: casa.summary,
    street: casa.street,
+   reviews: casa.reviews,
  });
-
- 

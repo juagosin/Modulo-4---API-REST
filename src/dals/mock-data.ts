@@ -15,7 +15,7 @@ export const db: DB = {
       summary: "Fantastic duplex apartment with three bedrooms, located in the historic area of Porto, Ribeira (Cube) - UNESCO World Heritage Site. Centenary building fully rehabilitated, without losing their original character.",
       street: "Porto, Porto, Portugal",
       reviews:{
-        _id: new ObjectId(),
+        _id: new ObjectId("65f8b434a6cce7e182340531"),
         autor: "Juan",
         review: "Me encantó",
         fecha: new Date('1998-11-16T11:25'),
@@ -27,19 +27,19 @@ export const db: DB = {
       summary: "Hello dear Guests, wellcome to istanbul. My House is 2+1 and at second floor. 1 privite room is for my international guests. House is Very close to Taksim Square. You can Walk in 30 minutes or you can take a bus.  The bus stop is only 100 m from home. You can go Taksim, Eminönü, Karaköy, Kadıköy, Beyazıt, Sultanahmet easily from home.  I have 1 bed, two people can sleep together. Second person should pay extra. You can use kitchen, bathroom, free Wifi, dishwasher, washing machine, Ironing.",
       street: "Beyoğlu, İstanbul, Turkey", 
       reviews:{
-        _id: new ObjectId(),
+        _id: new ObjectId("65f8b4393e31c21ec036ff79"),
         autor: "Pedro",
         review: "Mal olor",
         fecha: new Date('1998-11-16T11:25'),
       }     
     },
     {
-      _id: new ObjectId(),
+      _id: new ObjectId("65f8b4411c149ac0e46c3b47"),
       name: "Cozy Nest, heart of the Plateau",
       summary: "Come spend a few days (or weeks) in our beautiful and cozy apartment situated in the heart of Montreal's most happening neighborhood! You will share the space with me as, maybe another guest and probably a cute cat or kitten (I sometimes foster cute little furry balls). LGBTQ friendly :) Looking forward to meeting you!",
       street: "Montreal, QC, Canada",
       reviews:{
-        _id: new ObjectId(),
+        _id: new ObjectId("65f8b44786ab1904d36e98ad"),
         autor: "Juan",
         review: "Me encantó",
         fecha: new Date('1998-11-16T11:25'),
@@ -51,7 +51,7 @@ export const db: DB = {
       summary: "Residencial com Serviços, Sala em 2 ambientes,varanda,quarto,cozinha,wc. Frente para o Mar da Barra, condomínio com piscina aquecida, sauna, hidromassagem,salões de festa,academia,cabeleireiro,play, mobiliado com todos os eletrodomésticos.",
       street: "Rio de Janeiro, Rio de Janeiro, Brazil",
       reviews:{
-        _id: new ObjectId(),
+        _id: new ObjectId("65f8b44d3fbb734b9bd1c27c"),
         autor: "Juan",
         review: "Me encantó",
         fecha: new Date('1998-11-16T11:25'),
@@ -63,7 +63,7 @@ export const db: DB = {
       summary: "The flat is located in Matosinhos, part of Porto's District, where you can have the best of both worlds: the magic and beauty of Porto's Old City and the Beaches, Central Park and Seafood restaurants, with plenty of eclectic entertainment.",
       street: "Matosinhos, Porto, Portugal",
       reviews:{
-        _id: new ObjectId(),
+        _id: new ObjectId("65f8b4526bf19bc50ccf3596"),
         autor: "Juan",
         review: "Me encantó",
         fecha: new Date('1998-11-16T11:25'),
@@ -87,7 +87,7 @@ export const db: DB = {
       summary: "Asia House, sits on an ocean bluff in Princeville on the spectacular north shore of Kauai. The ocean or Queen's Bath is right across the street. There are beaches all over Princeville, all within 1-2 miles or less. Princeville Resort is a jewel on Hanalei Bay, known as one of the most beautiful bays and beaches in the world. This location is very quiet. Kauai has it all... spectacular scenery, gracious people, bird-watching, whale watching, snorkeling, diving, golfing, hiking, and more.",
       street: "Princeville, HI, United States",
       reviews:{
-        _id: new ObjectId(),
+        _id: new ObjectId("65f8b4582abefee0c3c65e85"),
         autor: "Juan",
         review: "Me encantó",
         fecha: new Date('1998-11-16T11:25'),
@@ -95,6 +95,41 @@ export const db: DB = {
     },
   ],
   reviews:[
-    
+    {
+      _id: new ObjectId("65f8b434a6cce7e182340531"),
+      autor: "Juan",
+      review: "Me encantó",
+      fecha: new Date('1998-11-16T11:25'),
+    },
+    {
+      _id: new ObjectId("65f8b4393e31c21ec036ff79"),
+      autor: "Pedro",
+      review: "Mal olor",
+      fecha: new Date('1998-11-16T11:25'),
+    },
+    {
+      _id: new ObjectId("65f8b44786ab1904d36e98ad"),
+      autor: "Juan",
+      review: "Me encantó",
+      fecha: new Date('1998-11-16T11:25'),
+    },
+    {
+      _id: new ObjectId("65f8b44d3fbb734b9bd1c27c"),
+      autor: "Juan",
+      review: "Me encantó",
+      fecha: new Date('1998-11-16T11:25'),
+    },
+    {
+      _id: new ObjectId("65f8b4526bf19bc50ccf3596"),
+      autor: "Juan",
+      review: "Me encantó",
+      fecha: new Date('1998-11-16T11:25'),
+    },
+    {
+      _id: new ObjectId(),
+      autor: "Juan",
+      review: "Me encantó",
+      fecha: new Date('1998-11-16T11:25'),
+    }
   ]
 };
