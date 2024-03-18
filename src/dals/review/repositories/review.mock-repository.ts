@@ -18,7 +18,7 @@ const insertReview = (review: Review) => {
 
 
 export const mockRepository: ReviewRepository = {
-
+  getReview: async (id: string) => db.reviews.find((b) => b._id.toHexString() === id),
   saveReview: async (review: Review) =>
   insertReview(review)
 
