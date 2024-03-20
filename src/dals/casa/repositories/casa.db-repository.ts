@@ -19,7 +19,13 @@ export const dbRepository: CasaRepository = {
        });
   },
   saveCasa: async (casa: Casa) => {
-    throw new Error("Not implemented");
+    return await getCasaContext().findOneAndUpdate(
+      {
+        _id: casa._id,
+      },
+      { $set: casa },
+      { upsert: true, returnDocument: 'after' }
+    );
   },
   deleteCasa: async (id: string) => {
     throw new Error("Not implemented");
