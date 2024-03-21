@@ -21,3 +21,7 @@ export const mapCasaFromApiToModel = (casa: apiModel.Casa): model.Casa => ({
    street: casa.street,
    reviews: casa.reviews,
  });
+ export const mapCasaListFromApiToModel = (
+    casaList: apiModel.Casa[]
+    ): model.Casa[] =>
+    Array.isArray(casaList) ? casaList.map(mapCasaFromApiToModel) : [];
