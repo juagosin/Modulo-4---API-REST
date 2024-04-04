@@ -1,6 +1,6 @@
 import { ObjectId } from "mongodb";
 import { CasaRepository } from "./casa.repository.js";
-import { Casa } from "../casa.model.js";
+import { Casa, Review } from "../casa.model.js";
 import { getCasaContext } from '../casa.context.js';
 
 export const dbRepository: CasaRepository = {
@@ -24,6 +24,15 @@ export const dbRepository: CasaRepository = {
         _id: casa._id,
       },
       { $set: casa },
+      { upsert: true, returnDocument: 'after' }
+    );
+  },
+  insertReview: async (review: Review) => {
+    return await getCasaContext().findOneAndUpdate(
+      {
+        _id: review._id,
+      },
+      { $set: review },
       { upsert: true, returnDocument: 'after' }
     );
   },

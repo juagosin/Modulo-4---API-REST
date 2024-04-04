@@ -1,10 +1,10 @@
 export default {
-    rootDir: '../../',
-    verbose: true,
-    restoreMocks: true,
-    transform: {
+  rootDir: '../../',
+  verbose: true,
+  restoreMocks: true,
+  transform: {
     '^.+\\.tsx?$': [
-    'ts-jest',
+      'ts-jest',
       {
         useESM: true,
       },
@@ -15,4 +15,3 @@ export default {
     '^(\\.{1,2}/.*)\\.js$': '$1',
   },
 };
-  

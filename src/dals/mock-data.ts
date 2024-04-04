@@ -1,10 +1,8 @@
 import { ObjectId } from "mongodb";
 import { Casa } from "./casa/index.js";
-import { Review } from "./review/index.js";
 
 export interface DB {
   casas: Casa[];  
-  reviews: Review[];
 }
 
 export const db: DB = {
@@ -93,43 +91,5 @@ export const db: DB = {
         fecha: new Date('1998-11-16T11:25'),
       }
     },
-  ],
-  reviews:[
-    {
-      _id: new ObjectId("65f8b434a6cce7e182340531"),
-      autor: "Juan",
-      review: "Me encantó",
-      fecha: new Date('1998-11-16T11:25'),
-    },
-    {
-      _id: new ObjectId("65f8b4393e31c21ec036ff79"),
-      autor: "Pedro",
-      review: "Mal olor",
-      fecha: new Date('1998-11-16T11:25'),
-    },
-    {
-      _id: new ObjectId("65f8b44786ab1904d36e98ad"),
-      autor: "Juan",
-      review: "Me encantó",
-      fecha: new Date('1998-11-16T11:25'),
-    },
-    {
-      _id: new ObjectId("65f8b44d3fbb734b9bd1c27c"),
-      autor: "Juan",
-      review: "Me encantó",
-      fecha: new Date('1998-11-16T11:25'),
-    },
-    {
-      _id: new ObjectId("65f8b4526bf19bc50ccf3596"),
-      autor: "Juan",
-      review: "Me encantó",
-      fecha: new Date('1998-11-16T11:25'),
-    },
-    {
-      _id: new ObjectId(),
-      autor: "Juan",
-      review: "Me encantó",
-      fecha: new Date('1998-11-16T11:25'),
-    }
   ]
 };

@@ -9,6 +9,19 @@ export const mapCasaFromModelToApi = (casa: model.Casa): apiModel.Casa => ({
   street: casa.street,
   reviews: casa.reviews,
 });
+export const mapReviewFromModelToApi = (review: model.Review): apiModel.Review => ({
+  id: review._id.toHexString(),
+  autor: review.autor,
+  review: review.review,
+  fecha: review.fecha
+});
+
+export const mapReviewFromApiToModel = (review: apiModel.Review): model.Review => ({
+  _id: new ObjectId(review.id),
+  autor: review.autor,
+  review: review.review,
+  fecha: review.fecha
+ });
 
 export const mapCasaListFromModelToApi = (
   casaList: model.Casa[]

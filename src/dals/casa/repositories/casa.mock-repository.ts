@@ -1,6 +1,6 @@
 import { ObjectId } from "mongodb";
 import { CasaRepository } from "./casa.repository.js";
-import { Casa } from "../casa.model.js";
+import { Casa, Review } from "../casa.model.js";
 import { db } from "../../mock-data.js";
 
 const insertCasa = (casa: Casa) => {
@@ -18,6 +18,17 @@ const updateCasa = (casa: Casa) => {
   db.casas = db.casas.map((b) => (b._id.toHexString() === casa._id.toHexString() ? { ...b, ...casa } : b));
   return casa;
 };
+
+const insertReview = (review: Review)=>{
+  const _id = new ObjectId();
+  const newReview: Review = {
+    ...review,
+    _id,
+  };
+
+  //db.casas = [...db.casas, newReview];
+  return newReview;
+}
 const paginateCasaList = (
   casaList: Casa[],
   page: number,
@@ -39,6 +50,8 @@ export const mockRepository: CasaRepository = {
   getCasa: async (id: string) => db.casas.find((b) => b._id.toHexString() === id),
   saveCasa: async (casa: Casa) =>
   db.casas.some((b) => b._id.toHexString() === casa._id.toHexString()) ? updateCasa(casa) : insertCasa(casa),
+  insertReview: async (review: Review) =>
+  insertReview(review),
   deleteCasa: async (id: string) => {
     const exists = db.casas.some((b) => b._id.toHexString() === id);
     db.casas = db.casas.filter((b) => b._id.toHexString() !== id);

@@ -1,7 +1,6 @@
 import { Router } from "express";
-import { casaRepository, reviewRepository } from "#dals/index.js";
-import { mapCasaListFromModelToApi, mapCasaFromModelToApi, mapCasaFromApiToModel } from "./casa.mappers.js";
-import { mapReviewListFromModelToApi, mapReviewFromModelToApi, mapReviewFromApiToModel } from "#pods/review/review.mappers.js";
+import { casaRepository } from "#dals/index.js";
+import { mapCasaListFromModelToApi, mapCasaFromModelToApi, mapCasaFromApiToModel, mapReviewFromApiToModel, mapReviewFromModelToApi } from "./casa.mappers.js";
 
 export const casasApi = Router();
 
@@ -52,9 +51,14 @@ casasApi
 .post("/:id/reviews/", async (req, res, next) => {
   try {
     const { id } = req.params;
-    const review = mapReviewFromApiToModel(req.body);
-    const newReview = await reviewRepository.saveReview(review);    
-    res.sendStatus(201).send(mapReviewFromModelToApi(newReview));
+    const casa = await casaRepository.getCasa(id);
+    if (casa) {
+      const review = mapReviewFromApiToModel(req.body);      
+      const newReview = await casaRepository.insertReview(review);  
+      res.status(201).send(mapReviewFromModelToApi(newReview));
+    } else {
+      res.sendStatus(404);
+    }    
   } catch (error) {
     next(error);
   }
