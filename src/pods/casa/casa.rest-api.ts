@@ -54,8 +54,9 @@ casasApi
     const casa = await casaRepository.getCasa(id);
     if (casa) {
       const review = mapReviewFromApiToModel(req.body);      
-      const newReview = await casaRepository.insertReview(review);  
-      res.status(201).send(mapReviewFromModelToApi(newReview));
+      const newReview = await casaRepository.insertReview(id,review);  
+      //res.status(201).send(mapReviewFromModelToApi(newReview));
+      res.sendStatus(204);
     } else {
       res.sendStatus(404);
     }    

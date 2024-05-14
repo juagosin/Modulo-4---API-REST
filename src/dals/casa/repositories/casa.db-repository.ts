@@ -27,14 +27,17 @@ export const dbRepository: CasaRepository = {
       { upsert: true, returnDocument: 'after' }
     );
   },
-  insertReview: async (review: Review) => {
-    return await getCasaContext().findOneAndUpdate(
+  insertReview: async (casaId: string,review: Review) => {
+    const {acknowledged} =  await getCasaContext().updateOne(
       {
-        _id: review._id,
-      },
-      { $set: review },
-      { upsert: true, returnDocument: 'after' }
+        _id: new ObjectId(casaId),
+      },{
+        $push: {
+          reviews: review
+        }
+      }      
     );
+    return acknowledged ? review : null;
   },
   deleteCasa: async (id: string) => {
     throw new Error("Not implemented");

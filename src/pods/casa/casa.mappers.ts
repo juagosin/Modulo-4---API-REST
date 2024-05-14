@@ -10,14 +10,14 @@ export const mapCasaFromModelToApi = (casa: model.Casa): apiModel.Casa => ({
   reviews: casa.reviews,
 });
 export const mapReviewFromModelToApi = (review: model.Review): apiModel.Review => ({
-  id: review._id.toHexString(),
+  id: review._id.toString(),
   autor: review.autor,
   review: review.review,
   fecha: review.fecha
 });
 
 export const mapReviewFromApiToModel = (review: apiModel.Review): model.Review => ({
-  _id: new ObjectId(review.id),
+  _id: review.id,
   autor: review.autor,
   review: review.review,
   fecha: review.fecha
@@ -32,7 +32,7 @@ export const mapCasaFromApiToModel = (casa: apiModel.Casa): model.Casa => ({
    name: casa.name,
    summary: casa.summary,
    street: casa.street,
-   reviews: casa.reviews,
+   reviews: [],
  });
  export const mapCasaListFromApiToModel = (
     casaList: apiModel.Casa[]

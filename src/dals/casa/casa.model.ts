@@ -5,10 +5,10 @@ export interface Casa {
     name: string;
     summary: string;
     street: string;
-    reviews: Review;
+    reviews: Review[];
   }
   export interface Review {
-    _id: ObjectId;
+    _id: string;
     autor: string;
     review: string;
     fecha: Date;

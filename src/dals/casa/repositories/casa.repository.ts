@@ -4,6 +4,6 @@ export interface CasaRepository {
   getCasaList: (page?: number, pageSize?: number) => Promise<Casa[]>;
   getCasa: (id: string) => Promise<Casa>;
   saveCasa: (casa: Casa) => Promise<Casa>;
-  insertReview: (review: Review) => Promise<Review>;
+  insertReview: (casaId: string, review: Review) => Promise<Review>;
   deleteCasa: (id: string) => Promise<boolean>;
 }

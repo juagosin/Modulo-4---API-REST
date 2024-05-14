@@ -6,28 +6,36 @@ import { db } from "../../mock-data.js";
 const insertCasa = (casa: Casa) => {
   const _id = new ObjectId();
   const newCasa: Casa = {
-    ...casa,
     _id,
+    ...casa   
   };
 
-  db.casas = [...db.casas, newCasa];
+  db.listingsAndReviews = [...db.listingsAndReviews, newCasa];
   return newCasa;
 };
 
 const updateCasa = (casa: Casa) => {
-  db.casas = db.casas.map((b) => (b._id.toHexString() === casa._id.toHexString() ? { ...b, ...casa } : b));
+  db.listingsAndReviews = db.listingsAndReviews.map((b) => (b._id.toHexString() === casa._id.toHexString() ? { ...b, ...casa } : b));
   return casa;
 };
 
-const insertReview = (review: Review)=>{
+const insertReview = (casaId: string, review: Review)=>{
   const _id = new ObjectId();
   const newReview: Review = {
-    ...review,
-    _id,
+     _id,
+    ...review
   };
+  // Encuentra la casa con el ID proporcionado
+  const casaIndex = db.listingsAndReviews.findIndex((casa) => casa._id.toHexString() === casaId);
 
-  //db.casas = [...db.casas, newReview];
-  return newReview;
+  if (casaIndex !== -1) {
+    // Añade la nueva revisión al campo de array de revisiones dentro de la casa
+    db.listingsAndReviews[casaIndex].reviews.push(newReview);
+    // Retorna la nueva revisión
+    return newReview;
+  } else {
+    throw new Error("Casa no encontrada"); // Manejar el caso donde no se encuentra la casa
+  };
 }
 const paginateCasaList = (
   casaList: Casa[],
@@ -46,15 +54,15 @@ const paginateCasaList = (
 
 export const mockRepository: CasaRepository = {
   getCasaList: async (page?: number, pageSize?: number) =>
-  paginateCasaList(db.casas, page, pageSize),
-  getCasa: async (id: string) => db.casas.find((b) => b._id.toHexString() === id),
+  paginateCasaList(db.listingsAndReviews, page, pageSize),
+  getCasa: async (id: string) => db.listingsAndReviews.find((b) => b._id.toHexString() === id),
   saveCasa: async (casa: Casa) =>
-  db.casas.some((b) => b._id.toHexString() === casa._id.toHexString()) ? updateCasa(casa) : insertCasa(casa),
-  insertReview: async (review: Review) =>
-  insertReview(review),
+  db.listingsAndReviews.some((b) => b._id.toHexString() === casa._id.toHexString()) ? updateCasa(casa) : insertCasa(casa),
+  insertReview: async (casaId: string, review: Review) => 
+    db.listingsAndReviews.some((b) => b._id.toHexString() === casaId) ? insertReview(casaId,review) :null,
   deleteCasa: async (id: string) => {
-    const exists = db.casas.some((b) => b._id.toHexString() === id);
-    db.casas = db.casas.filter((b) => b._id.toHexString() !== id);
+    const exists = db.listingsAndReviews.some((b) => b._id.toHexString() === id);
+    db.listingsAndReviews = db.listingsAndReviews.filter((b) => b._id.toHexString() !== id);
     return exists;
   },
 };
