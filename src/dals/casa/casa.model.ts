@@ -1,7 +1,7 @@
 
 import { ObjectId } from "mongodb";
 export interface Casa {
-    _id: ObjectId;
+    _id: string;
     name: string;
     summary: string;
     street: string;

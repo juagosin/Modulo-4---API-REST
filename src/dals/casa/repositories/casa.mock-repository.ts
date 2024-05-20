@@ -15,7 +15,7 @@ const insertCasa = (casa: Casa) => {
 };
 
 const updateCasa = (casa: Casa) => {
-  db.listingsAndReviews = db.listingsAndReviews.map((b) => (b._id.toHexString() === casa._id.toHexString() ? { ...b, ...casa } : b));
+  db.listingsAndReviews = db.listingsAndReviews.map((b) => (b._id === casa._id ? { ...b, ...casa } : b));
   return casa;
 };
 
@@ -26,7 +26,7 @@ const insertReview = (casaId: string, review: Review)=>{
     ...review
   };
   // Encuentra la casa con el ID proporcionado
-  const casaIndex = db.listingsAndReviews.findIndex((casa) => casa._id.toHexString() === casaId);
+  const casaIndex = db.listingsAndReviews.findIndex((casa) => casa._id === casaId);
 
   if (casaIndex !== -1) {
     // Añade la nueva revisión al campo de array de revisiones dentro de la casa
@@ -55,14 +55,14 @@ const paginateCasaList = (
 export const mockRepository: CasaRepository = {
   getCasaList: async (page?: number, pageSize?: number) =>
   paginateCasaList(db.listingsAndReviews, page, pageSize),
-  getCasa: async (id: string) => db.listingsAndReviews.find((b) => b._id.toHexString() === id),
+  getCasa: async (id: string) => db.listingsAndReviews.find((b) => b._id === id),
   saveCasa: async (casa: Casa) =>
-  db.listingsAndReviews.some((b) => b._id.toHexString() === casa._id.toHexString()) ? updateCasa(casa) : insertCasa(casa),
+  db.listingsAndReviews.some((b) => b._id === casa._id) ? updateCasa(casa) : insertCasa(casa),
   insertReview: async (casaId: string, review: Review) => 
-    db.listingsAndReviews.some((b) => b._id.toHexString() === casaId) ? insertReview(casaId,review) :null,
+    db.listingsAndReviews.some((b) => b._id === casaId) ? insertReview(casaId,review) :null,
   deleteCasa: async (id: string) => {
-    const exists = db.listingsAndReviews.some((b) => b._id.toHexString() === id);
-    db.listingsAndReviews = db.listingsAndReviews.filter((b) => b._id.toHexString() !== id);
+    const exists = db.listingsAndReviews.some((b) => b._id === id);
+    db.listingsAndReviews = db.listingsAndReviews.filter((b) => b._id !== id);
     return exists;
   },
 };

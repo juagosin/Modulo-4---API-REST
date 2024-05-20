@@ -15,7 +15,7 @@ export const dbRepository: CasaRepository = {
   },
   getCasa: async (id: string) => {
     return await getCasaContext().findOne({
-         _id: new ObjectId(id),
+         _id: id,
        });
   },
   saveCasa: async (casa: Casa) => {
@@ -30,7 +30,7 @@ export const dbRepository: CasaRepository = {
   insertReview: async (casaId: string,review: Review) => {
     const {acknowledged} =  await getCasaContext().updateOne(
       {
-        _id: new ObjectId(casaId),
+        _id: casaId,
       },{
         $push: {
           reviews: review
